@@ -1,0 +1,42 @@
+
+@pytest.mark.asyncio
+async def test_update_user_invalid_email(user_id):
+    print("User ID:", user_id)  # Agregar esta línea para imprimir el valor de user_id
+    print("TYPE VAR:", type(user_id))
+    with pytest.raises(EmailInvalidError):
+        await user_usecase.update_user(
+            user_id,
+            UpdateUserSchema(email="invalid_email", name="John Doe"),
+        )
+
+
+@pytest.mark.asyncio
+async def test_update_user_name_with_numbers(user_id):
+    with pytest.raises(ValidationError):
+        await user_usecase.update_user(
+            user_id,
+            UpdateUserSchema(email="john.doe@example.com",
+                             name="John Doe 123"),
+        )
+
+
+@pytest.mark.asyncio
+async def test_update_user_name_with_weak_password(user_id):
+    with pytest.raises(PasswordWeakError):
+        await user_usecase.update_user(
+            user_id,
+            UpdateUserSchema(email="john.doe@example.com",
+                             name="John Doe 123", password="123456"),
+        )
+
+
+@pytest.mark.asyncio
+async def test_update_user_correct_email(user_id):
+    new_email = "johnupdate@qa_unitestexample.com"
+    updated_user = await user_usecase.update_user(
+        user_id,
+        UpdateUserSchema(email=new_email, name="John Doe"),
+    )
+    print(updated_user)
+    assert updated_user.success == True
+    assert updated_user.data.email == new_email

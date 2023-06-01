@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  apihub-redirections AWS Sam Template
+
+Globals:
+  Function:
+    Timeout: 30
+
+Parameters:
+  ServiceName:
+    Description: Name of the project
+    Type: String
+
+Resources:
+  Function:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Ref ServiceName
+      MemorySize: 256
+      CodeUri: ../src
+      Handler: main.handler
+      Runtime: python3.7
+      Environment:
+        Variables:
+          MYSQL_HOST: "[$MYSQL_HOST]"
+          MYSQL_DB: "[$MYSQL_DB]"
+          MYSQL_USER: "[$MYSQL_USER]"
+          MYSQL_PASS: "[$MYSQL_PASS]"
+      Events:
+        Api:
+          Type: HttpApi
+          Properties:
+            ApiId: !Ref Api
+
+  Api:
+    Type: AWS::Serverless::HttpApi
+
+Outputs:
+  ApiUrl:
+    Description: "ApiUrl"
+    Value:
+      Fn::Sub: 'https://${Api}.execute-api.${AWS::Region}.${AWS::URLSuffix}/'
