@@ -1,7 +1,7 @@
 from typing import Optional
-from contexts.user.infrastructure.user import DBUser
-from contexts.user.usecase.user_cmd_schema import CreateUserSchema, UpdateUserSchema
-from contexts.user.usecase.user_query_schema import SearchByEmailSchema, SearchByIdSchema
+from dddpy.user.infrastructure.user import DBUser
+from dddpy.user.usecase.user_cmd_schema import CreateUserSchema, UpdateUserSchema
+from dddpy.user.usecase.user_query_schema import SearchByEmailSchema, SearchByIdSchema
 
 
 class UserRepository:

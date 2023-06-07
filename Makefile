@@ -12,7 +12,7 @@ DOCKER_NETWORK      = services_network
 TAG_CLI             = cli
 TAG_DEV             = dev
 
-## DEPLOY ##
+## DEPLOY ##˜
 ENV                 ?= dev
 CYBORG_BUCKET       ?= project-cyborg.${ENV}
 DEPLOY_REGION       ?= sa-east-1

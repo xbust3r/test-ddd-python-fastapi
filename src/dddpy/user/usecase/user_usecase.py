@@ -1,17 +1,17 @@
-from contexts.user.usecase.user_cmd_schema import CreateUserSchema, UpdateUserSchema
-from contexts.user.usecase.user_query_schema import SearchByEmailSchema
+from dddpy.user.usecase.user_cmd_schema import CreateUserSchema, UpdateUserSchema
+from dddpy.user.usecase.user_query_schema import SearchByEmailSchema
 
-from contexts.shared.schemas.response_schema import ResponseSuccessSchema
-from contexts.shared.utils.validate_email import validate_email
-from contexts.shared.utils.password import password
+from dddpy.shared.schemas.response_schema import ResponseSuccessSchema
+from dddpy.shared.utils.validate_email import validate_email
+from dddpy.shared.utils.password import password
 
-from contexts.user.domain.user_exception import EmailExistError, EmailInvalidError, PasswordWeakError, UserNotFoundError, EmailNotFound
-from contexts.user.domain.user_success import SuccessMessages
-from contexts.user.domain.user_validation import CreateUserValidationSchema, UpdateUserValidationSchema
+from dddpy.user.domain.user_exception import EmailExistError, EmailInvalidError, PasswordWeakError, UserNotFoundError, EmailNotFound
+from dddpy.user.domain.user_success import SuccessMessages
+from dddpy.user.domain.user_validation import CreateUserValidationSchema, UpdateUserValidationSchema
 
 from marshmallow.exceptions import ValidationError
 
-from contexts.user.usecase.usecase_factory import user_cmd_usecase, user_query_usecase
+from dddpy.user.usecase.usecase_factory import user_cmd_usecase, user_query_usecase
 
 
 class UserUsecase:

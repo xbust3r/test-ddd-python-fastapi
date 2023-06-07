@@ -1,8 +1,8 @@
-from contexts.shared.mysql.base import SessionLocal
-from contexts.user.domain.user_repository import UserRepository
-from contexts.user.usecase.user_query_schema import SearchByEmailSchema
-from contexts.user.infrastructure.user import DBUser
-from contexts.user.domain.user import User
+from dddpy.shared.mysql.base import SessionLocal
+from dddpy.user.domain.user_repository import UserRepository
+from dddpy.user.usecase.user_query_schema import SearchByEmailSchema
+from dddpy.user.infrastructure.user import DBUser
+from dddpy.user.domain.user import User
 
 
 class UserQueryRepositoryImpl(UserRepository):

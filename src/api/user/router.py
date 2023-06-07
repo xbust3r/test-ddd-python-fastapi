@@ -1,18 +1,18 @@
 from fastapi import APIRouter, HTTPException, status
 from fastapi.responses import JSONResponse
 
-from contexts.user.usecase.user_cmd_schema import CreateUserSchema, UpdateUserSchema
-from contexts.user.usecase.user_cmd_usecase import UserCmdUsecase
+from dddpy.user.usecase.user_cmd_schema import CreateUserSchema, UpdateUserSchema
+from dddpy.user.usecase.user_cmd_usecase import UserCmdUsecase
 
-from contexts.user.usecase.user_query_schema import SearchByEmailSchema
-from contexts.user.usecase.user_usecase import UserUsecase
+from dddpy.user.usecase.user_query_schema import SearchByEmailSchema
+from dddpy.user.usecase.user_usecase import UserUsecase
 
-from contexts.user.domain.user_exception import EmailExistError, EmailInvalidError, PasswordWeakError, EmailNotFound
+from dddpy.user.domain.user_exception import EmailExistError, EmailInvalidError, PasswordWeakError, EmailNotFound
 
 from marshmallow.exceptions import ValidationError
 
 
-from contexts.shared.schemas.response_schema import ResponseErrorSchema
+from dddpy.shared.schemas.response_schema import ResponseErrorSchema
 
 router = APIRouter()
 

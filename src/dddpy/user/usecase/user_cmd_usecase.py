@@ -1,6 +1,6 @@
 
-from contexts.user.usecase.user_cmd_schema import CreateUserSchema, UpdateUserSchema
-from contexts.user.domain.user_repository import UserRepository
+from dddpy.user.usecase.user_cmd_schema import CreateUserSchema, UpdateUserSchema
+from dddpy.user.domain.user_repository import UserRepository
 
 
 class UserCmdUsecase:

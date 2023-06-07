@@ -9,7 +9,7 @@ class GetUserSchema(BaseModel):
     email:str
     created_at: Optional[datetime]
     updated_at: Optional[datetime]
-    is_public: Optional[bool]=False
+    
     
 class SearchByEmailSchema(BaseModel):
     email:str

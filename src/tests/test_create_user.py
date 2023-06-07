@@ -1,9 +1,9 @@
 import pytest
-from contexts.user.usecase.user_usecase import UserUsecase
-from contexts.user.usecase.user_cmd_schema import CreateUserSchema
+from dddpy.user.usecase.user_usecase import UserUsecase
+from dddpy.user.usecase.user_cmd_schema import CreateUserSchema
 
-from contexts.user.domain.user_exception import PasswordWeakError, EmailExistError, EmailInvalidError
-from contexts.user.domain.user_success import SuccessMessages
+from dddpy.user.domain.user_exception import PasswordWeakError, EmailExistError, EmailInvalidError
+from dddpy.user.domain.user_success import SuccessMessages
 from marshmallow.exceptions import ValidationError
 
 @pytest.mark.asyncio
@@ -22,13 +22,7 @@ async def test_create_user_weak_password():
     with pytest.raises(PasswordWeakError):
         await user_usecase.create_user(new_user)
         
-@pytest.mark.asyncio
-async def test_create_user_email_existr():
-    user_usecase = UserUsecase()
-    new_user = CreateUserSchema(name="John Doe", email="msaenz@aeonlinesolutions.com", password="123456")
-    
-    with pytest.raises(EmailExistError):
-        await user_usecase.create_user(new_user)
+
 
 @pytest.mark.asyncio
 async def test_create_user_long_name():
@@ -49,7 +43,16 @@ async def test_create_user_strong_password():
     
     response = await user_usecase.create_user(new_user)
     assert response.success == True
+
+
+@pytest.mark.asyncio
+async def test_create_user_email_existr():
+    user_usecase = UserUsecase()
+    new_user = CreateUserSchema(name="John Doe", email="john5@qa_unitestexample.com", password="123456")
     
+    with pytest.raises(EmailExistError):
+        await user_usecase.create_user(new_user)
+
 #@pytest.mark.asyncio
 #async def test_erase_create_tests():
 #    user_usecase = UserUsecase()

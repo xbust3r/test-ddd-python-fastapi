@@ -1,11 +1,11 @@
-from contexts.shared.mysql.base import SessionLocal
-from contexts.user.domain.user_repository import UserRepository
-from contexts.user.usecase.user_cmd_schema import CreateUserSchema, UpdateUserSchema
-from contexts.shared.timezone import Timezone
-from contexts.user.infrastructure.user import DBUser
+from dddpy.shared.mysql.base import SessionLocal
+from dddpy.user.domain.user_repository import UserRepository
+from dddpy.user.usecase.user_cmd_schema import CreateUserSchema, UpdateUserSchema
+from dddpy.shared.timezone import Timezone
+from dddpy.user.infrastructure.user import DBUser
 from sqlalchemy import delete
-from contexts.user.domain.user import User
-from contexts.user.infrastructure.user_query_repository import UserQueryRepositoryImpl
+from dddpy.user.domain.user import User
+from dddpy.user.infrastructure.user_query_repository import UserQueryRepositoryImpl
 
 
 class UserCmdRepositoryImpl(UserRepository):
@@ -19,9 +19,10 @@ class UserCmdRepositoryImpl(UserRepository):
             name=user.name,
             email=user.email,
             password=user.password,
+            status=None,
+            active_token="asd123",
             created_at=today,
-            updated_at=today,
-            is_public=False
+            updated_at=today
         )
         new_user = User.to_dbuser(domain_user)
         self.repo.add(new_user)

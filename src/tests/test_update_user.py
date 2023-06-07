@@ -1,10 +1,10 @@
 import pytest
-from contexts.user.usecase.user_usecase import UserUsecase
+from dddpy.user.usecase.user_usecase import UserUsecase
 # from contexts.user.domain.model import UpdateUserSchema
-from contexts.user.usecase.user_cmd_schema import UpdateUserSchema
-from contexts.user.usecase.user_query_schema import SearchByEmailSchema
-from contexts.user.domain.user_exception import EmailInvalidError, PasswordWeakError
-from contexts.user.domain.user_success import SuccessMessages
+from dddpy.user.usecase.user_cmd_schema import UpdateUserSchema
+from dddpy.user.usecase.user_query_schema import SearchByEmailSchema
+from dddpy.user.domain.user_exception import EmailInvalidError, PasswordWeakError
+from dddpy.user.domain.user_success import SuccessMessages
 from marshmallow.exceptions import ValidationError
 import asyncio
 
