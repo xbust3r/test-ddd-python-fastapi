@@ -9,9 +9,6 @@ from dddpy.user.domain.user_success import SuccessMessages
 from marshmallow.exceptions import ValidationError
 
 
-
-
-
 @pytest.mark.asyncio
 async def test_erase_create_tests():
     user_usecase = UserUsecase()
