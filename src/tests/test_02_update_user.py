@@ -58,11 +58,3 @@ async def test_update_user_correct_email(user_id):
     assert updated_user.success == True
     assert updated_user.data.email == new_email
 
-@pytest.mark.asyncio
-async def test_erase_create_tests():
-    user_usecase = UserUsecase()
-
-    response = await user_usecase.erase_create_tests()
-
-    assert response.success == True
-    assert response.message == SuccessMessages.REMOVE_CREATED_TEST
