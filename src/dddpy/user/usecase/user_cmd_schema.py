@@ -23,10 +23,10 @@ class UpdateUserSchema(BaseModel):
     """
 
     # Field 'name': The updated name of the user. Optional.
-    name: Optional[str]
+    name: Optional[str] = None
 
     # Field 'email': The updated email address of the user. Optional.
-    email: Optional[str]
+    email: Optional[str] = None
 
     # Field 'password': The updated password of the user. Optional.
-    password: Optional[str]
+    password: Optional[str] = None
